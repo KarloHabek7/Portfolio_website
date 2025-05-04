@@ -182,6 +182,29 @@
         .active-nav::after {
             width: 80%;
         }
+    
+        /* Navbar background and blur effect */
+        #navbar {
+            background-color: transparent !important; /* Ensure no direct background */
+        }
+    
+        #navbar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: transparent; /* Fully transparent background */
+            backdrop-filter: blur(8px); /* Apply blur only to the pseudo-element */
+            -webkit-backdrop-filter: blur(8px);
+            z-index: -1; /* Place it behind the navbar content */
+        }
+    
+        #navbar > div { /* Ensure content is above the pseudo-element */
+            position: relative;
+            z-index: 1;
+        }
         
         #particles-js {
             position: absolute;
@@ -772,7 +795,7 @@
 <body>
     <div id="particles-js"></div>
     
-    <header class="fixed top-0 left-0 w-full z-50 px-6 py-4 shadow-lg" id="navbar" style="background-color: rgba(26, 16, 60, 0.75); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);"> <!-- Applied semi-transparent background and blur -->
+    <header class="fixed top-0 left-0 w-full z-50 px-6 py-4 shadow-lg" id="navbar"> <!-- Removed inline background and blur -->
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="text-2xl font-bold gradient-text">KH</div>
             
