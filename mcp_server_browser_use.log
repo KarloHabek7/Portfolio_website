@@ -1,0 +1,12 @@
+2025-05-04 15:51:04,408 - root - INFO - Anonymized telemetry enabled. See https://docs.browser-use.com/development/telemetry for more information.
+2025-05-04 15:51:05,884 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-05-04 15:51:05,886 - mcp.server.lowlevel.server - INFO - Processing request of type ListResourcesRequest
+2025-05-04 15:51:05,887 - mcp.server.lowlevel.server - INFO - Processing request of type ListResourceTemplatesRequest
+2025-05-04 16:04:21,538 - root - INFO - Anonymized telemetry enabled. See https://docs.browser-use.com/development/telemetry for more information.
+2025-05-04 16:04:22,895 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-05-04 16:04:22,897 - mcp.server.lowlevel.server - INFO - Processing request of type ListResourcesRequest
+2025-05-04 16:04:22,898 - mcp.server.lowlevel.server - INFO - Processing request of type ListResourceTemplatesRequest
+2025-05-04 16:04:50,674 - root - INFO - Anonymized telemetry enabled. See https://docs.browser-use.com/development/telemetry for more information.
+2025-05-04 16:04:52,019 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-05-04 16:04:52,021 - mcp.server.lowlevel.server - INFO - Processing request of type ListResourcesRequest
+2025-05-04 16:04:52,023 - mcp.server.lowlevel.server - INFO - Processing request of type ListResourceTemplatesRequest
