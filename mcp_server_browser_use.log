@@ -18,3 +18,7 @@
 2025-05-06 14:18:10,203 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
 2025-05-06 14:18:10,206 - mcp.server.lowlevel.server - INFO - Processing request of type ListResourcesRequest
 2025-05-06 14:18:10,208 - mcp.server.lowlevel.server - INFO - Processing request of type ListResourceTemplatesRequest
+2025-05-06 19:25:42,527 - root - INFO - Anonymized telemetry enabled. See https://docs.browser-use.com/development/telemetry for more information.
+2025-05-06 19:25:45,376 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-05-06 19:25:45,378 - mcp.server.lowlevel.server - INFO - Processing request of type ListResourcesRequest
+2025-05-06 19:25:45,379 - mcp.server.lowlevel.server - INFO - Processing request of type ListResourceTemplatesRequest
