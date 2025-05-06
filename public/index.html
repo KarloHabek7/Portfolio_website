@@ -22,7 +22,7 @@
             --text-light: #E0FFFF;
             --neutral-dark: #333333;
         }
-        
+
         body {
             font-family: 'Exo 2', sans-serif;
             background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-darker) 100%);
@@ -30,11 +30,11 @@
             overflow-x: hidden;
             padding-top: 6rem; /* Increased slightly to ensure content clears navbar */
         }
-        
+
         h1, h2, h3, h4, h5, h6, .nav-link {
             font-family: 'Orbitron', sans-serif;
         }
-        
+
         .gradient-text {
             background: linear-gradient(90deg, var(--electric-blue), var(--vibrant-purple), var(--hot-pink), var(--bright-cyan));
             -webkit-background-clip: text;
@@ -42,14 +42,14 @@
             color: transparent;
             text-shadow: 0 0 10px rgba(0, 191, 255, 0.5);
         }
-        
+
         .glow-border {
             border: 2px solid transparent;
             border-image: linear-gradient(90deg, var(--electric-blue), var(--vibrant-purple), var(--hot-pink), var(--bright-cyan));
             border-image-slice: 1;
             position: relative;
         }
-        
+
         .glow-border::after {
             content: '';
             position: absolute;
@@ -63,12 +63,12 @@
             opacity: 0.5;
             border-radius: inherit;
         }
-        
+
         .holographic-panel {
             background: rgba(10, 5, 32, 0.7);
             backdrop-filter: blur(10px);
             border-radius: 8px;
-            box-shadow: 
+            box-shadow:
                 0 0 15px rgba(0, 191, 255, 0.5),
                 inset 0 0 15px rgba(138, 43, 226, 0.3);
             overflow: hidden;
@@ -76,7 +76,7 @@
             z-index: 1;
             transition: all 0.4s ease;
         }
-        
+
         .holographic-panel::before {
             content: '';
             position: absolute;
@@ -84,28 +84,28 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, 
-                rgba(0, 191, 255, 0.1) 0%, 
-                rgba(138, 43, 226, 0.1) 25%, 
-                rgba(255, 20, 147, 0.1) 50%, 
+            background: linear-gradient(135deg,
+                rgba(0, 191, 255, 0.1) 0%,
+                rgba(138, 43, 226, 0.1) 25%,
+                rgba(255, 20, 147, 0.1) 50%,
                 rgba(64, 224, 208, 0.1) 75%,
                 rgba(0, 191, 255, 0.1) 100%);
             opacity: 0;
             z-index: -1;
             transition: opacity 0.5s ease;
         }
-        
+
         .holographic-panel:hover::before {
             opacity: 1;
         }
-        
+
         .holographic-panel:hover {
             transform: translateY(-5px);
-            box-shadow: 
+            box-shadow:
                 0 0 20px rgba(0, 191, 255, 0.7),
                 inset 0 0 20px rgba(138, 43, 226, 0.5);
         }
-        
+
         .btn-futuristic {
             background: linear-gradient(90deg, var(--electric-blue), var(--vibrant-purple));
             border: none;
@@ -120,12 +120,14 @@
             transition: all 0.3s ease;
             box-shadow: 0 0 15px rgba(0, 191, 255, 0.5);
             text-transform: uppercase;
+            display: inline-block; /* Ensure proper layout */
+            text-align: center; /* Center text */
         }
-        
+
         .btn-futuristic:hover {
             box-shadow: 0 0 25px rgba(0, 191, 255, 0.8);
         }
-        
+
         .btn-futuristic::after {
             content: '';
             position: absolute;
@@ -137,7 +139,7 @@
             transform: rotate(45deg);
             animation: shine 3s infinite;
         }
-        
+
         @keyframes shine {
             0% {
                 transform: translateX(-100%) rotate(45deg);
@@ -146,7 +148,7 @@
                 transform: translateX(100%) rotate(45deg);
             }
         }
-        
+
         .nav-link {
             position: relative;
             padding: 0.5rem 1rem;
@@ -154,7 +156,7 @@
             font-weight: 500;
             transition: all 0.3s ease;
         }
-        
+
         .nav-link::after {
             content: '';
             position: absolute;
@@ -166,28 +168,28 @@
             background: linear-gradient(90deg, var(--electric-blue), var(--hot-pink));
             transition: width 0.3s ease;
         }
-        
+
         .nav-link:hover {
             color: var(--electric-blue);
         }
-        
+
         .nav-link:hover::after {
             width: 80%;
         }
-        
+
         .active-nav {
             color: var(--electric-blue);
         }
-        
+
         .active-nav::after {
             width: 80%;
         }
-    
+
         /* Navbar background and blur effect */
         #navbar {
             background-color: transparent !important; /* Ensure no direct background */
         }
-    
+
         #navbar::before {
             content: '';
             position: absolute;
@@ -200,12 +202,12 @@
             -webkit-backdrop-filter: blur(8px);
             z-index: -1; /* Place it behind the navbar content */
         }
-    
+
         #navbar > div { /* Ensure content is above the pseudo-element */
             position: relative;
             z-index: 1;
         }
-        
+
         #particles-js {
             position: absolute;
             width: 100%;
@@ -214,14 +216,14 @@
             left: 0;
             z-index: -1;
         }
-        
+
         .section {
             min-height: 100vh;
             padding: 6rem 1rem;
             position: relative;
             overflow: hidden;
         }
-        
+
         .section::before {
             content: '';
             position: absolute;
@@ -240,12 +242,12 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            background-image: 
+            background-image:
                 linear-gradient(to right, rgba(64, 224, 208, 0.05) 1px, transparent 1px),
                 linear-gradient(to bottom, rgba(64, 224, 208, 0.05) 1px, transparent 1px);
             background-size: 30px 30px;
         }
-        
+
         .hero-title {
             font-size: 4rem;
             font-weight: 800;
@@ -253,56 +255,41 @@
             letter-spacing: 2px;
             line-height: 1.2;
         }
-        
+
         .hero-subtitle {
             font-size: 1.5rem;
             letter-spacing: 3px;
             margin-top: 1rem;
         }
-        
+
         .profile-container {
             position: relative;
             width: 300px;
             height: 300px;
             margin: 0 auto;
             perspective: 1000px;
+            transition: transform 0.5s ease; /* Move transition here */
+            border-radius: 15px; /* Optional: Add rounding */
+            overflow: hidden; /* Keep image contained */
+            box-shadow: 0 0 25px rgba(0, 191, 255, 0.7); /* Keep shadow */
         }
-        
-        .profile-hexagon {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-            overflow: hidden;
-            transform-style: preserve-3d;
-            transition: transform 0.5s ease;
-            box-shadow: 0 0 25px rgba(0, 191, 255, 0.7);
+
+        .profile-container:hover {
+             transform: rotateY(10deg) rotateX(5deg) scale(1.05); /* Add scale on hover */
         }
-        
+
+        /* Removed .profile-hexagon styles */
+
         .profile-img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             object-position: center;
-        }
-        
-        .profile-hexagon::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, rgba(0, 191, 255, 0.3), rgba(138, 43, 226, 0.3));
-            z-index: 1;
+            display: block; /* Ensure no extra space */
         }
 
-        .profile-container:hover .profile-hexagon {
-            transform: rotateY(10deg) rotateX(5deg);
-        }
-        
+        /* Removed .profile-hexagon::before styles */
+
         .section-title {
             position: relative;
             font-size: 2.5rem;
@@ -311,7 +298,7 @@
             margin-bottom: 2rem;
             display: inline-block;
         }
-        
+
         .section-title::after {
             content: '';
             position: absolute;
@@ -322,33 +309,33 @@
             background: linear-gradient(90deg, var(--electric-blue), var(--hot-pink));
             border-radius: 3px;
         }
-        
+
         .skill-circle {
             position: relative;
             width: 120px;
             height: 120px;
             margin: 0 auto;
         }
-        
+
         .skill-circle svg {
             transform: rotate(-90deg);
         }
-        
+
         .skill-circle circle {
             fill: none;
             stroke-width: 8;
             stroke-linecap: round;
         }
-        
+
         .skill-bg {
             stroke: rgba(255, 255, 255, 0.1);
         }
-        
+
         .skill-progress {
             stroke: url(#skillGradient);
             transition: stroke-dashoffset 1s ease;
         }
-        
+
         .skill-text {
             position: absolute;
             top: 50%;
@@ -366,13 +353,13 @@
             text-align: center;
             color: var(--bright-cyan);
         }
-        
+
         .timeline {
             position: relative;
             max-width: 1200px;
             margin: 0 auto;
         }
-        
+
         .timeline::after {
             content: '';
             position: absolute;
@@ -385,14 +372,14 @@
             border-radius: 3px;
             box-shadow: 0 0 15px rgba(0, 191, 255, 0.7);
         }
-        
+
         .timeline-container {
             padding: 10px 40px;
             position: relative;
             width: 50%;
             box-sizing: border-box;
         }
-        
+
         .timeline-container::after {
             content: '';
             position: absolute;
@@ -405,27 +392,27 @@
             z-index: 1;
             box-shadow: 0 0 15px rgba(138, 43, 226, 0.7);
         }
-        
+
         .left {
             left: 0;
         }
-        
+
         .right {
             left: 50%;
         }
-        
+
         .left::after {
             right: -10px;
         }
-        
+
         .right::after {
             left: -10px;
         }
-        
+
         .timeline-content {
             padding: 20px;
         }
-        
+
         .timeline-date {
             font-family: 'Orbitron', sans-serif;
             font-weight: 600;
@@ -448,24 +435,24 @@
         .timeline-link:hover {
             color: var(--hot-pink);
         }
-        
+
         .project-card {
             height: 300px;
             overflow: hidden;
             position: relative;
         }
-        
+
         .project-card img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
         }
-        
+
         .project-card:hover img {
             transform: scale(1.1);
         }
-        
+
         .project-overlay {
             position: absolute;
             bottom: 0;
@@ -480,7 +467,7 @@
             flex-direction: column;
             justify-content: flex-end; /* Align content to bottom */
         }
-        
+
         .project-card:hover .project-overlay {
             transform: translateY(0);
         }
@@ -499,14 +486,14 @@
             max-height: 100px; /* Limit description height */
             overflow-y: auto; /* Add scroll if needed */
         }
-        
+
         .project-tech {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
             margin-top: 10px;
         }
-        
+
         .tech-tag {
             background: rgba(0, 191, 255, 0.2);
             padding: 3px 10px;
@@ -526,14 +513,14 @@
         .project-link:hover {
             color: var(--hot-pink);
         }
-        
+
         .quote-container {
             position: relative;
             max-width: 800px;
             margin: 0 auto;
             padding: 30px;
         }
-        
+
         .quote-text {
             font-size: 1.1rem; /* Slightly smaller */
             line-height: 1.7;
@@ -548,7 +535,7 @@
             color: var(--bright-cyan);
             text-align: right;
         }
-        
+
         .fa-quote-left {
             color: var(--vibrant-purple);
             font-size: 1.5rem; /* Slightly smaller */
@@ -562,7 +549,7 @@
             padding-left: 1rem;
             border-left: 3px solid; /* Use border for visual separation */
         }
-        
+
         .contact-form input,
         .contact-form textarea {
             background: rgba(26, 16, 60, 0.5);
@@ -665,6 +652,9 @@
             }
             .mobile-nav-toggle {
                 display: block;
+            }
+            .hero-buttons {
+                justify-content: center; /* Center buttons on mobile */
             }
         }
 
@@ -790,7 +780,7 @@
     <header class="fixed top-0 left-0 w-full z-50 px-6 py-4 shadow-lg" id="navbar"> <!-- Removed inline background and blur -->
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <a href="#home" class="text-2xl font-bold gradient-text">KH</a>
-            
+
             <!-- Desktop Navigation -->
             <nav class="desktop-nav hidden md:block">
                 <ul class="flex space-x-6">
@@ -844,21 +834,21 @@
                     <h1 class="hero-title gradient-text animate-fadeInUp">Karlo Habek</h1>
                     <h2 class="hero-subtitle text-bright-cyan animate-fadeInUp" style="animation-delay: 0.2s;">Student · Teaching assistant · Mechatronics Technician</h2>
                     <p class="mt-4 text-lg animate-fadeInUp hero-summary" style="animation-delay: 0.4s;">
-                        I am a third-year student at the Faculty of Mechanical Engineering and Naval Architecture (FSB / FAMENA) in Zagreb, specializing in mechatronics and robotics. 
-                        Alongside my studies, I work as a teaching assistant for the courses Mathematics 1 and Mathematics 2 from the first year at FSB. 
+                        I am a third-year student at the Faculty of Mechanical Engineering and Naval Architecture (FSB / FAMENA) in Zagreb, specializing in mechatronics and robotics.
+                        Alongside my studies, I work as a teaching assistant for the courses Mathematics 1 and Mathematics 2 from the first year at FSB.
                         I proudly hold the title of Mechatronics Technician, obtained upon completing the corresponding program at Ruđer Bošković Technical School in Zagreb.
                     </p>
-                    <div class="mt-8 flex flex-wrap gap-4 justify-center md:justify-start" style="animation-delay: 0.6s;">
+                    <div class="mt-8 flex flex-wrap gap-4 justify-center md:justify-start hero-buttons" style="animation-delay: 0.6s;">
                         <a href="#projects" class="btn-futuristic animate-fadeInUp">View Projects</a>
+                        <a href="CV.pdf" download="Karlo_Habek_CV.pdf" class="btn-futuristic animate-fadeInUp" style="background: linear-gradient(90deg, var(--bright-cyan), var(--electric-blue)); box-shadow: 0 0 15px rgba(64, 224, 208, 0.5);">Download CV</a>
                         <a href="#contact" class="btn-futuristic animate-fadeInUp" style="background: linear-gradient(90deg, var(--vibrant-purple), var(--hot-pink)); box-shadow: 0 0 15px rgba(138, 43, 226, 0.5);">Contact Me</a>
                     </div>
                 </div>
                 <!-- Profile Image -->
                 <div class="md:w-1/2 mb-10 md:mb-0 flex justify-center">
                     <div class="profile-container animate-fadeInUp" style="animation-delay: 0.3s;">
-                        <div class="profile-hexagon">
-                            <img src="assets/portret23.jpg" alt="Karlo Habek" class="profile-img">
-                        </div>
+                        <!-- Removed profile-hexagon div -->
+                        <img src="assets/portret23.jpg" alt="Karlo Habek" class="profile-img">
                     </div>
                 </div>
             </div>
@@ -1125,7 +1115,7 @@
         <div class="grid-lines"></div>
         <div class="container mx-auto px-4">
             <h2 class="section-title gradient-text text-center animate-fadeInUp">Work Experience</h2>
-            
+
             <div class="timeline animate-fadeInUp">
                 <!-- DOK-ING -->
                 <div class="timeline-container left">
@@ -1188,7 +1178,7 @@
         <div class="grid-lines"></div>
         <div class="container mx-auto px-4">
             <h2 class="section-title gradient-text text-center animate-fadeInUp">Formal Education</h2>
-            
+
             <div class="timeline animate-fadeInUp">
                 <!-- FSB -->
                 <div class="timeline-container left">
@@ -1222,7 +1212,7 @@
             <p class="text-center mb-10 max-w-2xl mx-auto animate-fadeInUp">
                 Here are a couple of my most significant projects. I've worked on numerous smaller projects as well, constantly honing my skills.
             </p>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Project 1: Coil Winder -->
                 <div class="project-card holographic-panel animate-fadeInUp" style="animation-delay: 0.1s;">
@@ -1305,7 +1295,7 @@
         <div class="grid-lines"></div>
         <div class="container mx-auto px-4">
             <h2 class="section-title gradient-text text-center animate-fadeInUp">My Philosophy</h2>
-            
+
             <div class="quote-container holographic-panel animate-fadeInUp p-8">
                 <div class="space-y-6"> <!-- Use space-y for vertical spacing -->
                     <blockquote class="quote-block">
@@ -1367,7 +1357,7 @@
         <div class="grid-lines"></div>
         <div class="container mx-auto px-4">
             <h2 class="section-title gradient-text text-center animate-fadeInUp">Get In Touch</h2>
-            
+
             <div class="flex flex-col md:flex-row gap-10">
                 <!-- Contact Info -->
                 <div class="md:w-1/2">
@@ -1461,7 +1451,7 @@
                     }
                 },
                 "color": {
-                    "value": ["#00BFFF", "#8A2BE2", "#FF1493", "#40E0D0"] 
+                    "value": ["#00BFFF", "#8A2BE2", "#FF1493", "#40E0D0"]
                 },
                 "shape": {
                     "type": "circle",
@@ -1562,12 +1552,12 @@
 
         // Fade-in Up Animation for elements
         gsap.utils.toArray('.animate-fadeInUp').forEach((elem) => {
-            gsap.fromTo(elem, 
-                { opacity: 0, y: 30 }, 
-                { 
-                    opacity: 1, 
-                    y: 0, 
-                    duration: 0.8, 
+            gsap.fromTo(elem,
+                { opacity: 0, y: 30 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.8,
                     ease: "power3.out",
                     scrollTrigger: {
                         trigger: elem,
@@ -1588,9 +1578,9 @@
             const max = 5; // Assuming max skill level is 5
             const offset = circumference - (value / max) * circumference;
 
-            gsap.fromTo(circle, 
+            gsap.fromTo(circle,
                 { strokeDasharray: circumference, strokeDashoffset: circumference },
-                { 
+                {
                     strokeDashoffset: offset,
                     duration: 1.5,
                     ease: "power2.inOut",
@@ -1605,17 +1595,17 @@
 
         // Timeline Animation (Staggered Fade-in)
         gsap.utils.toArray('.timeline-container').forEach((container, index) => {
-             gsap.fromTo(container, 
-                { opacity: 0, x: container.classList.contains('left') ? -50 : 50 }, 
-                { 
-                    opacity: 1, 
-                    x: 0, 
-                    duration: 0.8, 
+             gsap.fromTo(container,
+                { opacity: 0, x: container.classList.contains('left') ? -50 : 50 },
+                {
+                    opacity: 1,
+                    x: 0,
+                    duration: 0.8,
                     ease: "power3.out",
                     scrollTrigger: {
                         trigger: container,
-                        start: "top 85%", 
-                        toggleActions: "play none none none", 
+                        start: "top 85%",
+                        toggleActions: "play none none none",
                     }
                 }
             );
@@ -1635,7 +1625,7 @@
             let index = sections.length;
 
             while(--index && window.scrollY + 100 < sections[index].offsetTop) {} // Adjust offset as needed
-            
+
             navLinks.forEach((link) => link.classList.remove('active-nav'));
             mobileNavLinks.forEach((link) => link.classList.remove('active-nav'));
 
