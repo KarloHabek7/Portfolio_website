@@ -268,16 +268,8 @@
             height: 300px;
             margin: 0 auto;
             perspective: 1000px;
-            transition: transform 0.5s ease; /* Move transition here */
-            border-radius: 15px; /* Optional: Add rounding */
-            overflow: hidden; /* Keep image contained */
-            box-shadow: 0 0 25px rgba(0, 191, 255, 0.7); /* Keep shadow */
         }
-
-        .profile-container:hover {
-             transform: rotateY(10deg) rotateX(5deg) scale(1.05); /* Add scale on hover */
-        }
-
+        
         .profile-hexagon {
             position: absolute;
             top: 0;
@@ -290,16 +282,28 @@
             transition: transform 0.5s ease;
             box-shadow: 0 0 25px rgba(0, 191, 255, 0.7);
         }
-
+        
         .profile-img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             object-position: center;
-            display: block; /* Ensure no extra space */
+        }
+        
+        .profile-hexagon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(0, 191, 255, 0.3), rgba(138, 43, 226, 0.3));
+            z-index: 1;
         }
 
-        /* Removed .profile-hexagon::before styles */
+        .profile-container:hover .profile-hexagon {
+            transform: rotateY(10deg) rotateX(5deg);
+        }
 
         .section-title {
             position: relative;
