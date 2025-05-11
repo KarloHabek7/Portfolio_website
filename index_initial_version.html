@@ -1,0 +1,1619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karlo Habek | Futuristic Portfolio</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <style>
+        :root {
+            --bg-dark: #0D0520;
+            --bg-darker: #1A103C;
+            --electric-blue: #00BFFF;
+            --vibrant-purple: #8A2BE2;
+            --hot-pink: #FF1493;
+            --bright-cyan: #40E0D0;
+            --text-light: #E0FFFF;
+            --neutral-dark: #333333;
+        }
+        
+        body {
+            font-family: 'Exo 2', sans-serif;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-darker) 100%);
+            color: var(--text-light);
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5, h6, .nav-link {
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, var(--electric-blue), var(--vibrant-purple), var(--hot-pink), var(--bright-cyan));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 10px rgba(0, 191, 255, 0.5);
+        }
+        
+        .glow-border {
+            border: 2px solid transparent;
+            border-image: linear-gradient(90deg, var(--electric-blue), var(--vibrant-purple), var(--hot-pink), var(--bright-cyan));
+            border-image-slice: 1;
+            position: relative;
+        }
+        
+        .glow-border::after {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: linear-gradient(90deg, var(--electric-blue), var(--vibrant-purple), var(--hot-pink), var(--bright-cyan));
+            filter: blur(8px);
+            z-index: -1;
+            opacity: 0.5;
+            border-radius: inherit;
+        }
+        
+        .holographic-panel {
+            background: rgba(10, 5, 32, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 8px;
+            box-shadow: 
+                0 0 15px rgba(0, 191, 255, 0.5),
+                inset 0 0 15px rgba(138, 43, 226, 0.3);
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+            transition: all 0.4s ease;
+        }
+        
+        .holographic-panel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, 
+                rgba(0, 191, 255, 0.1) 0%, 
+                rgba(138, 43, 226, 0.1) 25%, 
+                rgba(255, 20, 147, 0.1) 50%, 
+                rgba(64, 224, 208, 0.1) 75%,
+                rgba(0, 191, 255, 0.1) 100%);
+            opacity: 0;
+            z-index: -1;
+            transition: opacity 0.5s ease;
+        }
+        
+        .holographic-panel:hover::before {
+            opacity: 1;
+        }
+        
+        .holographic-panel:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                0 0 20px rgba(0, 191, 255, 0.7),
+                inset 0 0 20px rgba(138, 43, 226, 0.5);
+        }
+        
+        .btn-futuristic {
+            background: linear-gradient(90deg, var(--electric-blue), var(--vibrant-purple));
+            border: none;
+            color: white;
+            padding: 10px 30px;
+            border-radius: 30px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 500;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(0, 191, 255, 0.5);
+            text-transform: uppercase;
+        }
+        
+        .btn-futuristic:hover {
+            box-shadow: 0 0 25px rgba(0, 191, 255, 0.8);
+        }
+        
+        .btn-futuristic::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+        
+        @keyframes shine {
+            0% {
+                transform: translateX(-100%) rotate(45deg);
+            }
+            100% {
+                transform: translateX(100%) rotate(45deg);
+            }
+        }
+        
+        .nav-link {
+            position: relative;
+            padding: 0.5rem 1rem;
+            color: var(--text-light);
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--electric-blue), var(--hot-pink));
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--electric-blue);
+        }
+        
+        .nav-link:hover::after {
+            width: 80%;
+        }
+        
+        .active-nav {
+            color: var(--electric-blue);
+        }
+        
+        .active-nav::after {
+            width: 80%;
+        }
+        
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+        
+        .section {
+            min-height: 100vh;
+            padding: 6rem 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(138, 43, 226, 0.1), transparent 70%);
+            z-index: -1;
+        }
+
+        .grid-lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: 
+                linear-gradient(to right, rgba(64, 224, 208, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(64, 224, 208, 0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+        
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            line-height: 1.2;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            letter-spacing: 3px;
+            margin-top: 1rem;
+        }
+        
+        .profile-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+            perspective: 1000px;
+        }
+        
+        .profile-hexagon {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            overflow: hidden;
+            transform-style: preserve-3d;
+            transition: transform 0.5s ease;
+            box-shadow: 0 0 25px rgba(0, 191, 255, 0.7);
+        }
+        
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+        
+        .profile-hexagon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(0, 191, 255, 0.3), rgba(138, 43, 226, 0.3));
+            z-index: 1;
+        }
+
+        .profile-container:hover .profile-hexagon {
+            transform: rotateY(10deg) rotateX(5deg);
+        }
+        
+        .section-title {
+            position: relative;
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 2rem;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--electric-blue), var(--hot-pink));
+            border-radius: 3px;
+        }
+        
+        .skill-circle {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto;
+        }
+        
+        .skill-circle svg {
+            transform: rotate(-90deg);
+        }
+        
+        .skill-circle circle {
+            fill: none;
+            stroke-width: 8;
+            stroke-linecap: round;
+        }
+        
+        .skill-bg {
+            stroke: rgba(255, 255, 255, 0.1);
+        }
+        
+        .skill-progress {
+            stroke: url(#skillGradient);
+            transition: stroke-dashoffset 1s ease;
+        }
+        
+        .skill-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background: linear-gradient(to bottom, var(--electric-blue), var(--vibrant-purple), var(--hot-pink));
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 3px;
+            box-shadow: 0 0 15px rgba(0, 191, 255, 0.7);
+        }
+        
+        .timeline-container {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--bg-dark);
+            border: 4px solid var(--vibrant-purple);
+            border-radius: 50%;
+            top: 30px;
+            z-index: 1;
+            box-shadow: 0 0 15px rgba(138, 43, 226, 0.7);
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .left::after {
+            right: -10px;
+        }
+        
+        .right::after {
+            left: -10px;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+        }
+        
+        .timeline-date {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 600;
+            color: var(--bright-cyan);
+            margin-bottom: 5px;
+        }
+        
+        .project-card {
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .project-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .project-card:hover img {
+            transform: scale(1.1);
+        }
+        
+        .project-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(13, 5, 32, 0.9), transparent);
+            padding: 20px;
+            transform: translateY(70%);
+            transition: transform 0.5s ease;
+        }
+        
+        .project-card:hover .project-overlay {
+            transform: translateY(0);
+        }
+        
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .tech-tag {
+            background: rgba(0, 191, 255, 0.2);
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            color: var(--bright-cyan);
+        }
+        
+        .quote-container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px;
+        }
+        
+        .quote-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            font-style: italic;
+        }
+        
+        .fa-quote-left {
+            color: var(--vibrant-purple);
+            font-size: 2rem;
+            margin-right: 10px;
+            vertical-align: top;
+            opacity: 0.7;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            background: rgba(26, 16, 60, 0.5);
+            border: 1px solid var(--neutral-dark);
+            color: var(--text-light);
+            border-radius: 5px;
+            padding: 10px;
+            width: 100%;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--electric-blue);
+            box-shadow: 0 0 10px rgba(0, 191, 255, 0.5);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .profile-container {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-container {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-container.right {
+                left: 0;
+            }
+            
+            .timeline-container.left::after,
+            .timeline-container.right::after {
+                left: 15px;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fadeInUp {
+            opacity: 0;
+        }
+        
+        @keyframes glitch {
+            0% {
+                clip-path: inset(40% 0 61% 0);
+            }
+            20% {
+                clip-path: inset(92% 0 1% 0);
+            }
+            40% {
+                clip-path: inset(43% 0 1% 0);
+            }
+            60% {
+                clip-path: inset(25% 0 58% 0);
+            }
+            80% {
+                clip-path: inset(54% 0 7% 0);
+            }
+            100% {
+                clip-path: inset(58% 0 43% 0);
+            }
+        }
+        
+        .glitch-effect {
+            position: relative;
+        }
+        
+        .glitch-effect::before,
+        .glitch-effect::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-dark);
+            color: var(--text-light);
+        }
+        
+        .glitch-effect::before {
+            left: 2px;
+            text-shadow: -2px 0 var(--hot-pink);
+            animation: glitch 0.3s infinite linear alternate-reverse;
+            opacity: 0;
+        }
+        
+        .glitch-effect::after {
+            left: -2px;
+            text-shadow: 2px 0 var(--electric-blue);
+            animation: glitch 0.3s infinite linear alternate-reverse;
+            opacity: 0;
+        }
+        
+        .glitch-effect.active::before,
+        .glitch-effect.active::after {
+            opacity: 0.5;
+        }
+        
+        /* Radial Skills Chart */
+        .skills-chart {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            height: 600px;
+            margin: 0 auto;
+        }
+        
+        .skill-node {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(26, 16, 60, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            box-shadow: 0 0 15px rgba(0, 191, 255, 0.5);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            z-index: 2;
+        }
+        
+        .skill-node:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(138, 43, 226, 0.7);
+        }
+        
+        .skill-node i {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+        
+        .skill-node.center {
+            width: 120px;
+            height: 120px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(138, 43, 226, 0.3);
+            z-index: 3;
+        }
+        
+        .skill-node.center:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        
+        .skill-connections {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        .nav-indicator {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+        
+        .nav-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--neutral-dark);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .nav-dot.active {
+            background: var(--electric-blue);
+            box-shadow: 0 0 10px rgba(0, 191, 255, 0.7);
+        }
+        
+        .nav-line {
+            width: 2px;
+            height: 20px;
+            background: var(--neutral-dark);
+        }
+        
+        /* Mobile Navigation */
+        .mobile-nav-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1000;
+        }
+        
+        @media (max-width: 768px) {
+            .desktop-nav {
+                display: none;
+            }
+            
+            .mobile-nav-toggle {
+                display: block;
+            }
+            
+            .mobile-nav {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(13, 5, 32, 0.95);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                z-index: 999;
+                transform: translateX(-100%);
+                transition: transform 0.5s ease;
+            }
+            
+            .mobile-nav.active {
+                transform: translateX(0);
+            }
+            
+            .mobile-nav .nav-link {
+                margin: 10px 0;
+                font-size: 1.2rem;
+            }
+            
+            .nav-indicator {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="particles-js"></div>
+    
+    <header class="fixed top-0 left-0 w-full z-50 px-6 py-4" id="navbar">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="text-2xl font-bold gradient-text">KH</div>
+            
+            <nav class="desktop-nav">
+                <ul class="flex space-x-6">
+                    <li><a href="#home" class="nav-link active-nav">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#skills" class="nav-link">Skills</a></li>
+                    <li><a href="#experience" class="nav-link">Experience</a></li>
+                    <li><a href="#education" class="nav-link">Education</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#philosophy" class="nav-link">Philosophy</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <button class="mobile-nav-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+    
+    <div class="mobile-nav">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#experience" class="nav-link">Experience</a>
+        <a href="#education" class="nav-link">Education</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#philosophy" class="nav-link">Philosophy</a>
+        <a href="#contact" class="nav-link">Contact</a>
+        <button class="mobile-nav-toggle mt-8">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+    
+    <div class="nav-indicator">
+        <div class="nav-dot active" data-section="home"></div>
+        <div class="nav-line"></div>
+        <div class="nav-dot" data-section="about"></div>
+        <div class="nav-line"></div>
+        <div class="nav-dot" data-section="skills"></div>
+        <div class="nav-line"></div>
+        <div class="nav-dot" data-section="experience"></div>
+        <div class="nav-line"></div>
+        <div class="nav-dot" data-section="education"></div>
+        <div class="nav-line"></div>
+        <div class="nav-dot" data-section="projects"></div>
+        <div class="nav-line"></div>
+        <div class="nav-dot" data-section="philosophy"></div>
+        <div class="nav-line"></div>
+        <div class="nav-dot" data-section="contact"></div>
+    </div>
+    
+    <!-- Hero Section -->
+    <section id="home" class="section flex items-center justify-center min-h-screen">
+        <div class="grid-lines"></div>
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col-reverse md:flex-row items-center justify-between">
+                <div class="md:w-1/2 text-center md:text-left">
+                    <h1 class="hero-title glitch-effect animate-fadeInUp" data-text="Karlo Habek">
+                        <span class="gradient-text">Karlo Habek</span>
+                    </h1>
+                    <h3 class="hero-subtitle animate-fadeInUp">
+                        <span class="text-bright-cyan">Mechatronics Engineer</span>
+                    </h3>
+                    <p class="mt-4 text-lg animate-fadeInUp">
+                        Passionate about designing and developing innovative mechatronic systems that
+                        combine mechanical engineering, electronics, control engineering, and computer science.
+                    </p>
+                    <div class="mt-8 flex flex-wrap gap-4 justify-center md:justify-start">
+                        <a href="#contact" class="btn-futuristic animate-fadeInUp">Contact Me</a>
+                        <a href="#projects" class="btn-futuristic animate-fadeInUp">View Projects</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 mb-10 md:mb-0 flex justify-center">
+                    <div class="profile-container animate-fadeInUp">
+                        <div class="profile-hexagon">
+                            <!-- This would be replaced with a real profile image of Karlo -->
+                            <div class="bg-gradient-to-br from-blue-500 via-purple-600 to-pink-500 w-full h-full flex items-center justify-center">
+                                <span class="text-5xl font-bold">K.H.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="grid-lines"></div>
+        <div class="container mx-auto px-4">
+            <h2 class="section-title gradient-text text-center mb-16 animate-fadeInUp">About Me</h2>
+            
+            <div class="flex flex-col md:flex-row gap-10">
+                <div class="md:w-1/2">
+                    <div class="holographic-panel p-8 h-full animate-fadeInUp">
+                        <h3 class="text-xl font-bold mb-4">Who I Am</h3>
+                        <p class="mb-4">
+                            I'm Karlo Habek, a Mechatronics Engineer with expertise in developing integrated systems that combine mechanical, electrical, and software components.
+                        </p>
+                        <p class="mb-4">
+                            With a passion for innovation and problem-solving, I specialize in designing and implementing solutions that bridge multiple engineering disciplines.
+                        </p>
+                        <p>
+                            Based in Zagreb, Croatia, I bring a detail-oriented approach to every project, focusing on efficiency, reliability, and cutting-edge technology.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <div class="holographic-panel p-8 h-full animate-fadeInUp">
+                        <h3 class="text-xl font-bold mb-4"><i class="fas fa-trophy mr-2 text-hot-pink"></i> Professional Goals</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-bright-cyan mt-1 mr-3"></i>
+                                <div>
+                                    <h4 class="font-bold">Advanced Development</h4>
+                                    <p>Master the integration of emerging technologies into mechatronic systems, pushing the boundaries of what's possible.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-bright-cyan mt-1 mr-3"></i>
+                                <div>
+                                    <h4 class="font-bold">Technical Leadership</h4>
+                                    <p>Lead multidisciplinary teams in developing innovative solutions to complex engineering challenges.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-bright-cyan mt-1 mr-3"></i>
+                                <div>
+                                    <h4 class="font-bold">Industry Innovation</h4>
+                                    <p>Contribute to advancements in industrial automation and mechatronics through research and practical applications.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="grid-lines"></div>
+        <div class="container mx-auto px-4">
+            <h2 class="section-title gradient-text text-center mb-16 animate-fadeInUp"><i class="fas fa-puzzle-piece mr-2"></i>Skills</h2>
+            
+            <div class="mb-20">
+                <h3 class="text-xl font-bold text-center mb-10 animate-fadeInUp">Software & Technologies</h3>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+                    <!-- Skill Circles -->
+                    <div class="animate-fadeInUp">
+                        <div class="skill-circle">
+                            <svg width="120" height="120" viewBox="0 0 120 120">
+                                <defs>
+                                    <linearGradient id="skillGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" stop-color="var(--electric-blue)" />
+                                        <stop offset="50%" stop-color="var(--vibrant-purple)" />
+                                        <stop offset="100%" stop-color="var(--hot-pink)" />
+                                    </linearGradient>
+                                </defs>
+                                <circle class="skill-bg" cx="60" cy="60" r="54" />
+                                <circle class="skill-progress" cx="60" cy="60" r="54" stroke-dasharray="339.292" stroke-dashoffset="67.8584" />
+                            </svg>
+                            <div class="skill-text">80%</div>
+                            <div class="text-center mt-2">MATLAB</div>
+                        </div>
+                    </div>
+                    
+                    <div class="animate-fadeInUp">
+                        <div class="skill-circle">
+                            <svg width="120" height="120" viewBox="0 0 120 120">
+                                <circle class="skill-bg" cx="60" cy="60" r="54" />
+                                <circle class="skill-progress" cx="60" cy="60" r="54" stroke-dasharray="339.292" stroke-dashoffset="84.823" />
+                            </svg>
+                            <div class="skill-text">75%</div>
+                            <div class="text-center mt-2">SolidWorks</div>
+                        </div>
+                    </div>
+                    
+                    <div class="animate-fadeInUp">
+                        <div class="skill-circle">
+                            <svg width="120" height="120" viewBox="0 0 120 120">
+                                <circle class="skill-bg" cx="60" cy="60" r="54" />
+                                <circle class="skill-progress" cx="60" cy="60" r="54" stroke-dasharray="339.292" stroke-dashoffset="101.7876" />
+                            </svg>
+                            <div class="skill-text">70%</div>
+                            <div class="text-center mt-2">AutoCAD</div>
+                        </div>
+                    </div>
+                    
+                    <div class="animate-fadeInUp">
+                        <div class="skill-circle">
+                            <svg width="120" height="120" viewBox="0 0 120 120">
+                                <circle class="skill-bg" cx="60" cy="60" r="54" />
+                                <circle class="skill-progress" cx="60" cy="60" r="54" stroke-dasharray="339.292" stroke-dashoffset="118.7522" />
+                            </svg>
+                            <div class="skill-text">65%</div>
+                            <div class="text-center mt-2">LabVIEW</div>
+                        </div>
+                    </div>
+                    
+                    <div class="animate-fadeInUp">
+                        <div class="skill-circle">
+                            <svg width="120" height="120" viewBox="0 0 120 120">
+                                <circle class="skill-bg" cx="60" cy="60" r="54" />
+                                <circle class="skill-progress" cx="60" cy="60" r="54" stroke-dasharray="339.292" stroke-dashoffset="84.823" />
+                            </svg>
+                            <div class="skill-text">75%</div>
+                            <div class="text-center mt-2">Python</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mechatronics Skill Visualization -->
+            <div class="mb-20">
+                <h3 class="text-xl font-bold text-center mb-10 animate-fadeInUp">Development of Mechatronic Systems</h3>
+                
+                <div class="skills-chart animate-fadeInUp">
+                    <div class="skill-node center">
+                        <i class="fas fa-cogs text-bright-cyan"></i>
+                        <span class="text-xs text-center">Mechatronics</span>
+                    </div>
+                    
+                    <div class="skill-node" style="top: 15%; left: 50%; transform: translateX(-50%);">
+                        <i class="fas fa-microchip text-electric-blue"></i>
+                        <span class="text-xs">Electronics</span>
+                    </div>
+                    
+                    <div class="skill-node" style="top: 50%; left: 15%; transform: translateY(-50%);">
+                        <i class="fas fa-wrench text-hot-pink"></i>
+                        <span class="text-xs">Mechanical</span>
+                    </div>
+                    
+                    <div class="skill-node" style="top: 50%; left: 85%; transform: translateY(-50%);">
+                        <i class="fas fa-code text-vibrant-purple"></i>
+                        <span class="text-xs">Software</span>
+                    </div>
+                    
+                    <div class="skill-node" style="top: 85%; left: 50%; transform: translateX(-50%);">
+                        <i class="fas fa-project-diagram text-bright-cyan"></i>
+                        <span class="text-xs">Systems</span>
+                    </div>
+                    
+                    <canvas id="skillConnections" class="skill-connections"></canvas>
+                </div>
+            </div>
+            
+            <!-- Languages -->
+            <div class="holographic-panel p-8 animate-fadeInUp">
+                <h3 class="text-xl font-bold mb-6"><i class="fas fa-globe mr-2 text-electric-blue"></i> Languages</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div>
+                        <div class="font-bold">Croatian</div>
+                        <div>Native</div>
+                    </div>
+                    <div>
+                        <div class="font-bold">English</div>
+                        <div>Professional Proficiency</div>
+                    </div>
+                    <div>
+                        <div class="font-bold">German</div>
+                        <div>Basic Knowledge</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <div class="grid-lines"></div>
+        <div class="container mx-auto px-4">
+            <h2 class="section-title gradient-text text-center mb-16 animate-fadeInUp">
+                <i class="fas fa-suitcase mr-2"></i>Work Experience
+            </h2>
+            
+            <div class="timeline animate-fadeInUp">
+                <div class="timeline-container left">
+                    <div class="holographic-panel timeline-content">
+                        <div class="timeline-date">2020 - Present</div>
+                        <h3 class="text-lg font-bold">Mechatronics Engineer</h3>
+                        <h4>Croatian Technical Solutions, Zagreb</h4>
+                        <ul class="mt-4 list-disc pl-5">
+                            <li>Develop integrated mechatronic systems for industrial automation</li>
+                            <li>Design control systems using PLCs and custom microcontroller solutions</li>
+                            <li>Create technical documentation and engineering specifications</li>
+                            <li>Optimize existing systems for improved performance</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="timeline-container right">
+                    <div class="holographic-panel timeline-content">
+                        <div class="timeline-date">2018 - 2020</div>
+                        <h3 class="text-lg font-bold">Junior Automation Engineer</h3>
+                        <h4>Zagreb Robotics Ltd.</h4>
+                        <ul class="mt-4 list-disc pl-5">
+                            <li>Assisted in developing control systems for robotic applications</li>
+                            <li>Programmed PLC systems and HMI interfaces</li>
+                            <li>Conducted testing and troubleshooting of automated systems</li>
+                            <li>Collaborated with cross-functional teams on product development</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="timeline-container left">
+                    <div class="holographic-panel timeline-content">
+                        <div class="timeline-date">2017 - 2018</div>
+                        <h3 class="text-lg font-bold">Engineering Intern</h3>
+                        <h4>Adriatic Engineering Solutions</h4>
+                        <ul class="mt-4 list-disc pl-5">
+                            <li>Supported senior engineers in mechanical and electrical system design</li>
+                            <li>Created CAD models and technical drawings</li>
+                            <li>Assisted with prototype testing and data collection</li>
+                            <li>Documented test results and engineering processes</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Education Section -->
+    <section id="education" class="section">
+        <div class="grid-lines"></div>
+        <div class="container mx-auto px-4">
+            <h2 class="section-title gradient-text text-center mb-16 animate-fadeInUp">
+                <i class="fas fa-graduation-cap mr-2"></i>Education
+            </h2>
+            
+            <div class="timeline animate-fadeInUp">
+                <div class="timeline-container left">
+                    <div class="holographic-panel timeline-content">
+                        <div class="timeline-date">2015 - 2017</div>
+                        <h3 class="text-lg font-bold">Master's Degree in Mechatronics</h3>
+                        <h4>Faculty of Mechanical Engineering and Naval Architecture, University of Zagreb</h4>
+                        <p class="mt-4">Specialized in advanced control systems and industrial automation. Master's thesis: "Development of an Adaptive Control System for Robotic Manipulators."</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-container right">
+                    <div class="holographic-panel timeline-content">
+                        <div class="timeline-date">2012 - 2015</div>
+                        <h3 class="text-lg font-bold">Bachelor's Degree in Mechanical Engineering</h3>
+                        <h4>Faculty of Mechanical Engineering and Naval Architecture, University of Zagreb</h4>
+                        <p class="mt-4">Focus on mechanical design, manufacturing processes, and introduction to mechatronics. Graduated with honors.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="grid-lines"></div>
+        <div class="container mx-auto px-4">
+            <h2 class="section-title gradient-text text-center mb-16 animate-fadeInUp">
+                <i class="fas fa-tv mr-2"></i>Projects
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="project-card holographic-panel animate-fadeInUp">
+                    <div class="bg-gradient-to-br from-blue-900 to-purple-900 w-full h-full flex items-center justify-center">
+                        <i class="fas fa-robot text-6xl text-bright-cyan"></i>
+                    </div>
+                    <div class="project-overlay">
+                        <h3 class="text-lg font-bold">Automated Sorting System</h3>
+                        <p class="text-sm mt-1">Designed and implemented an automated sorting system for a manufacturing facility, improving efficiency by 35%.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">PLC</span>
+                            <span class="tech-tag">Computer Vision</span>
+                            <span class="tech-tag">Motor Controls</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card holographic-panel animate-fadeInUp">
+                    <div class="bg-gradient-to-br from-purple-900 to-pink-900 w-full h-full flex items-center justify-center">
+                        <i class="fas fa-microchip text-6xl text-hot-pink"></i>
+                    </div>
+                    <div class="project-overlay">
+                        <h3 class="text-lg font-bold">Smart Environmental Control System</h3>
+                        <p class="text-sm mt-1">Developed an IoT-based environmental monitoring and control system for industrial applications.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Arduino</span>
+                            <span class="tech-tag">IoT</span>
+                            <span class="tech-tag">Sensors</span>
+                            <span class="tech-tag">Python</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card holographic-panel animate-fadeInUp">
+                    <div class="bg-gradient-to-br from-cyan-900 to-blue-900 w-full h-full flex items-center justify-center">
+                        <i class="fas fa-cogs text-6xl text-bright-cyan"></i>
+                    </div>
+                    <div class="project-overlay">
+                        <h3 class="text-lg font-bold">Robotic Arm Control System</h3>
+                        <p class="text-sm mt-1">Designed a precision control system for a 6-axis robotic arm with advanced path planning capabilities.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">MATLAB</span>
+                            <span class="tech-tag">ROS</span>
+                            <span class="tech-tag">Motion Control</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card holographic-panel animate-fadeInUp">
+                    <div class="bg-gradient-to-br from-purple-900 to-indigo-900 w-full h-full flex items-center justify-center">
+                        <i class="fas fa-chart-line text-6xl text-vibrant-purple"></i>
+                    </div>
+                    <div class="project-overlay">
+                        <h3 class="text-lg font-bold">Predictive Maintenance System</h3>
+                        <p class="text-sm mt-1">Created a machine learning-based system for predicting equipment failures before they occur.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Machine Learning</span>
+                            <span class="tech-tag">Data Analysis</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card holographic-panel animate-fadeInUp">
+                    <div class="bg-gradient-to-br from-blue-900 to-cyan-900 w-full h-full flex items-center justify-center">
+                        <i class="fas fa-car text-6xl text-electric-blue"></i>
+                    </div>
+                    <div class="project-overlay">
+                        <h3 class="text-lg font-bold">Autonomous Vehicle Prototype</h3>
+                        <p class="text-sm mt-1">Contributed to the development of navigation and control systems for an autonomous vehicle prototype.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Sensors</span>
+                            <span class="tech-tag">Control Systems</span>
+                            <span class="tech-tag">Computer Vision</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card holographic-panel animate-fadeInUp">
+                    <div class="bg-gradient-to-br from-pink-900 to-purple-900 w-full h-full flex items-center justify-center">
+                        <i class="fas fa-industry text-6xl text-hot-pink"></i>
+                    </div>
+                    <div class="project-overlay">
+                        <h3 class="text-lg font-bold">Energy Optimization System</h3>
+                        <p class="text-sm mt-1">Developed a system for optimizing energy usage in manufacturing processes, reducing costs by 25%.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">PLC</span>
+                            <span class="tech-tag">SCADA</span>
+                            <span class="tech-tag">Data Analysis</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Philosophy Section -->
+    <section id="philosophy" class="section">
+        <div class="grid-lines"></div>
+        <div class="container mx-auto px-4">
+            <h2 class="section-title gradient-text text-center mb-16 animate-fadeInUp">
+                <i class="fas fa-quote-left mr-2"></i>Philosophy
+            </h2>
+            
+            <div class="quote-container holographic-panel animate-fadeInUp" id="quote-carousel">
+                <div class="quote-slide active">
+                    <p class="quote-text">
+                        <i class="fas fa-quote-left"></i>
+                        Engineering is not merely about solving problems; it's about creating elegant solutions that seamlessly integrate multiple disciplines. The best mechatronic systems are those where the boundaries between mechanics, electronics, and software become invisible.
+                    </p>
+                </div>
+                
+                <div class="quote-slide hidden">
+                    <p class="quote-text">
+                        <i class="fas fa-quote-left"></i>
+                        Innovation doesn't come from following established patterns—it emerges when we challenge assumptions and explore the intersection of different fields. My approach is to continuously learn across disciplines and apply that knowledge to create more effective systems.
+                    </p>
+                </div>
+                
+                <div class="quote-slide hidden">
+                    <p class="quote-text">
+                        <i class="fas fa-quote-left"></i>
+                        The future of engineering lies in sustainable and adaptive systems that can evolve with changing needs. I believe in designing with flexibility and environmental consciousness at the forefront, creating solutions that stand the test of time.
+                    </p>
+                </div>
+                
+                <div class="flex justify-center mt-6 space-x-2">
+                    <button class="quote-dot active" data-quote="0"></button>
+                    <button class="quote-dot" data-quote="1"></button>
+                    <button class="quote-dot" data-quote="2"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="grid-lines"></div>
+        <div class="container mx-auto px-4">
+            <h2 class="section-title gradient-text text-center mb-16 animate-fadeInUp">
+                Contact Me
+            </h2>
+            
+            <div class="flex flex-col md:flex-row gap-10">
+                <div class="md:w-1/2">
+                    <div class="holographic-panel p-8 animate-fadeInUp">
+                        <h3 class="text-xl font-bold mb-6">Get In Touch</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <i class="fas fa-map-marker-alt text-hot-pink mr-4 text-2xl"></i>
+                                <div>
+                                    <div class="font-bold">Location</div>
+                                    <div>Zagreb, Croatia</div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <i class="fas fa-envelope text-electric-blue mr-4 text-2xl"></i>
+                                <div>
+                                    <div class="font-bold">Email</div>
+                                    <div>karlo.habek@example.com</div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <i class="fas fa-phone text-bright-cyan mr-4 text-2xl"></i>
+                                <div>
+                                    <div class="font-bold">Phone</div>
+                                    <div>+385 123 456 789</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h4 class="font-bold mb-4">Connect With Me</h4>
+                            <div class="flex space-x-4">
+                                <a href="#" class="w-10 h-10 rounded-full bg-neutral-dark flex items-center justify-center hover:bg-electric-blue transition-colors duration-300">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 rounded-full bg-neutral-dark flex items-center justify-center hover:bg-vibrant-purple transition-colors duration-300">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 rounded-full bg-neutral-dark flex items-center justify-center hover:bg-hot-pink transition-colors duration-300">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <div class="holographic-panel p-8 animate-fadeInUp">
+                        <h3 class="text-xl font-bold mb-6">Send Me a Message</h3>
+                        <form class="contact-form">
+                            <div class="mb-4">
+                                <label for="name" class="block mb-2">Name</label>
+                                <input type="text" id="name" class="w-full">
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label for="email" class="block mb-2">Email</label>
+                                <input type="email" id="email" class="w-full">
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label for="subject" class="block mb-2">Subject</label>
+                                <input type="text" id="subject" class="w-full">
+                            </div>
+                            
+                            <div class="mb-6">
+                                <label for="message" class="block mb-2">Message</label>
+                                <textarea id="message" rows="5" class="w-full"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn-futuristic w-full">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="bg-bg-darker py-8">
+        <div class="container mx-auto px-4 text-center">
+            <div class="text-2xl font-bold gradient-text mb-4">KH</div>
+            <p class="mb-4">&copy; 2023 Karlo Habek. All rights reserved.</p>
+            <p class="text-sm opacity-70">Mechatronics Engineer | Systems Developer | Innovator</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Particles.js Configuration
+        document.addEventListener('DOMContentLoaded', function() {
+            particlesJS("particles-js", {
+                "particles": {
+                    "number": {
+                        "value": 80,
+                        "density": {
+                            "enable": true,
+                            "value_area": 800
+                        }
+                    },
+                    "color": {
+                        "value": ["#00BFFF", "#8A2BE2", "#FF1493", "#40E0D0"]
+                    },
+                    "shape": {
+                        "type": "circle",
+                        "stroke": {
+                            "width": 0,
+                            "color": "#000000"
+                        }
+                    },
+                    "opacity": {
+                        "value": 0.5,
+                        "random": true,
+                        "anim": {
+                            "enable": true,
+                            "speed": 1,
+                            "opacity_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "size": {
+                        "value": 3,
+                        "random": true,
+                        "anim": {
+                            "enable": true,
+                            "speed": 2,
+                            "size_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "line_linked": {
+                        "enable": true,
+                        "distance": 150,
+                        "color": "#40E0D0",
+                        "opacity": 0.4,
+                        "width": 1
+                    },
+                    "move": {
+                        "enable": true,
+                        "speed": 1,
+                        "direction": "none",
+                        "random": true,
+                        "straight": false,
+                        "out_mode": "out",
+                        "bounce": false,
+                        "attract": {
+                            "enable": true,
+                            "rotateX": 600,
+                            "rotateY": 1200
+                        }
+                    }
+                },
+                "interactivity": {
+                    "detect_on": "canvas",
+                    "events": {
+                        "onhover": {
+                            "enable": true,
+                            "mode": "grab"
+                        },
+                        "onclick": {
+                            "enable": true,
+                            "mode": "push"
+                        },
+                        "resize": true
+                    },
+                    "modes": {
+                        "grab": {
+                            "distance": 140,
+                            "line_linked": {
+                                "opacity": 1
+                            }
+                        },
+                        "push": {
+                            "particles_nb": 4
+                        }
+                    }
+                },
+                "retina_detect": true
+            });
+            
+            // Initialize GSAP
+            gsap.registerPlugin(ScrollTrigger);
+            
+            // Navbar Scroll Effect
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    document.getElementById('navbar').classList.add('bg-bg-darker', 'shadow-lg');
+                } else {
+                    document.getElementById('navbar').classList.remove('bg-bg-darker', 'shadow-lg');
+                }
+            });
+            
+            // Mobile Navigation
+            const mobileToggle = document.querySelectorAll('.mobile-nav-toggle');
+            const mobileNav = document.querySelector('.mobile-nav');
+            
+            mobileToggle.forEach(toggle => {
+                toggle.addEventListener('click', function() {
+                    mobileNav.classList.toggle('active');
+                });
+            });
+            
+            document.querySelectorAll('.mobile-nav .nav-link').forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileNav.classList.remove('active');
+                });
+            });
+            
+            // Smooth scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // Fade In Animations
+            const fadeElements = document.querySelectorAll('.animate-fadeInUp');
+            fadeElements.forEach(element => {
+                gsap.to(element, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 1,
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: element,
+                        start: "top 80%",
+                    }
+                });
+            });
+            
+            // Glitch Effect
+            setTimeout(function() {
+                const glitchElement = document.querySelector('.glitch-effect');
+                glitchElement.classList.add('active');
+                
+                setTimeout(function() {
+                    glitchElement.classList.remove('active');
+                }, 1000);
+            }, 1500);
+            
+            setInterval(function() {
+                const glitchElement = document.querySelector('.glitch-effect');
+                glitchElement.classList.add('active');
+                
+                setTimeout(function() {
+                    glitchElement.classList.remove('active');
+                }, 1000);
+            }, 8000);
+            
+            // Skill Connections
+            const canvas = document.getElementById('skillConnections');
+            const ctx = canvas.getContext('2d');
+            canvas.width = 600;
+            canvas.height = 600;
+            
+            function drawConnections() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                const centerX = canvas.width / 2;
+                const centerY = canvas.height / 2;
+                
+                // Define node positions
+                const nodes = [
+                    { x: centerX, y: centerY }, // Center
+                    { x: centerX, y: 90 }, // Top
+                    { x: 90, y: centerY }, // Left
+                    { x: canvas.width - 90, y: centerY }, // Right
+                    { x: centerX, y: canvas.height - 90 } // Bottom
+                ];
+                
+                // Draw connections
+                ctx.lineWidth = 2;
+                
+                for (let i = 1; i < nodes.length; i++) {
+                    const gradient = ctx.createLinearGradient(
+                        centerX, centerY, nodes[i].x, nodes[i].y
+                    );
+                    gradient.addColorStop(0, '#8A2BE2');
+                    gradient.addColorStop(1, '#00BFFF');
+                    
+                    ctx.strokeStyle = gradient;
+                    ctx.beginPath();
+                    ctx.moveTo(centerX, centerY);
+                    ctx.lineTo(nodes[i].x, nodes[i].y);
+                    ctx.stroke();
+                    
+                    // Draw small glowing dots along the line
+                    const steps = 8;
+                    for (let j = 1; j < steps; j++) {
+                        const x = centerX + (nodes[i].x - centerX) * (j / steps);
+                        const y = centerY + (nodes[i].y - centerY) * (j / steps);
+                        
+                        ctx.beginPath();
+                        ctx.arc(x, y, 2, 0, Math.PI * 2);
+                        ctx.fillStyle = 'rgba(64, 224, 208, ' + Math.random() + ')';
+                        ctx.fill();
+                    }
+                }
+                
+                requestAnimationFrame(drawConnections);
+            }
+            
+            drawConnections();
+            
+            // Navigation Indicator
+            const sections = document.querySelectorAll('.section');
+            const navDots = document.querySelectorAll('.nav-dot');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            window.addEventListener('scroll', function() {
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (pageYOffset >= sectionTop - 300) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navDots.forEach(dot => {
+                    dot.classList.remove('active');
+                    if (dot.getAttribute('data-section') === current) {
+                        dot.classList.add('active');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active-nav');
+                    if (link.getAttribute('href') === '#' + current) {
+                        link.classList.add('active-nav');
+                    }
+                });
+            });
+            
+            // Quote Carousel
+            const quotes = document.querySelectorAll('.quote-slide');
+            const dots = document.querySelectorAll('.quote-dot');
+            let currentQuote = 0;
+            
+            function showQuote(index) {
+                quotes.forEach(quote => quote.classList.add('hidden'));
+                dots.forEach(dot => dot.classList.remove('active'));
+                
+                quotes[index].classList.remove('hidden');
+                dots[index].classList.add('active');
+                currentQuote = index;
+            }
+            
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    showQuote(index);
+                });
+            });
+            
+            setInterval(() => {
+                currentQuote = (currentQuote + 1) % quotes.length;
+                showQuote(currentQuote);
+            }, 8000);
+            
+            // Initial style for quote slides
+            quotes[0].classList.remove('hidden');
+            quotes[0].classList.add('active');
+        });
+    </script>
+</body>
+</html>

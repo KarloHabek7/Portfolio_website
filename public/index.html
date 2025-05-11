@@ -547,8 +547,78 @@
             display: block;
             margin-top: 0.5rem;
             font-weight: 500;
-            color: var(--bright-cyan);
-            text-align: right;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fadeInUp {
+            opacity: 0;
+        }
+        
+        @keyframes glitch {
+            0% {
+                clip-path: inset(40% 0 61% 0);
+            }
+            20% {
+                clip-path: inset(92% 0 1% 0);
+            }
+            40% {
+                clip-path: inset(43% 0 1% 0);
+            }
+            60% {
+                clip-path: inset(25% 0 58% 0);
+            }
+            80% {
+                clip-path: inset(54% 0 7% 0);
+            }
+            100% {
+                clip-path: inset(58% 0 43% 0);
+            }
+        }
+        
+        .glitch-effect {
+            position: relative;
+        }
+        
+        .glitch-effect::before,
+        .glitch-effect::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-dark);
+            color: var(--text-light);
+        }
+        
+        .glitch-effect::before {
+            left: 2px;
+            text-shadow: -2px 0 var(--hot-pink);
+            animation: glitch 0.3s infinite linear alternate-reverse;
+            opacity: 0;
+        }
+        
+        .glitch-effect::after {
+            left: -2px;
+            text-shadow: 2px 0 var(--electric-blue);
+            animation: glitch 0.3s infinite linear alternate-reverse;
+            opacity: 0;
+        }
+        
+        .glitch-effect.active::before,
+        .glitch-effect.active::after {
+            opacity: 0.5;
         }
 
         .fa-quote-left {
@@ -846,7 +916,7 @@
             <div class="flex flex-col-reverse md:flex-row items-center justify-between">
                 <!-- Text Content -->
                 <div class="md:w-1/2 text-center md:text-left">
-                    <h1 class="hero-title gradient-text animate-fadeInUp">Karlo Habek</h1>
+                    <h1 class="hero-title glitch-effect animate-fadeInUp" data-text="Karlo Habek"><span class="gradient-text">Karlo Habek</span></h1>
                     <h2 class="hero-subtitle text-bright-cyan animate-fadeInUp" style="animation-delay: 0.2s;">Student · Teaching assistant · Mechatronics Technician</h2>
                     <p class="mt-4 text-lg animate-fadeInUp hero-summary" style="animation-delay: 0.4s;">
                         I am a third-year student at the Faculty of Mechanical Engineering and Naval Architecture (FSB / FAMENA) in Zagreb, specializing in mechatronics and robotics.
@@ -1562,6 +1632,27 @@
             },
             "retina_detect": true
         });
+
+        // Glitch Effect
+        setTimeout(function() {
+            const glitchElement = document.querySelector('.glitch-effect');
+            if (glitchElement) {
+                glitchElement.classList.add('active');
+                setTimeout(function() {
+                    glitchElement.classList.remove('active');
+                }, 1000); // Duration of the glitch effect
+            }
+        }, 1500); // Delay before the first glitch
+
+        setInterval(function() {
+            const glitchElement = document.querySelector('.glitch-effect');
+            if (glitchElement) {
+                glitchElement.classList.add('active');
+                setTimeout(function() {
+                    glitchElement.classList.remove('active');
+                }, 1000); // Duration of the glitch effect
+            }
+        }, 8000); // Interval between glitches
 
         // --- GSAP Animations ---
         gsap.registerPlugin(ScrollTrigger);
