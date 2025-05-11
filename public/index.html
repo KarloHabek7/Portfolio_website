@@ -282,10 +282,11 @@
             width: 100%;
             height: 100%;
             clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-            overflow: hidden;
+            /* overflow: hidden; */ /* Removed to allow drop-shadow to be visible */
             transform-style: preserve-3d;
             transition: transform 0.5s ease;
-            box-shadow: 0 0 35px 5px rgba(0, 191, 255, 0.8); /* Enhanced shadow */
+            filter: drop-shadow(0 0 15px var(--electric-blue))
+                    drop-shadow(0 0 30px var(--vibrant-purple)); /* Glow effect using drop-shadow */
         }
         
         .profile-img {
@@ -293,6 +294,7 @@
             height: 100%;
             object-fit: cover;
             object-position: center;
+            /* Filter moved back to .profile-hexagon */
         }
         
         .profile-hexagon::before {
@@ -557,6 +559,41 @@
             font-weight: 500;
         }
 
+/* Navigation Indicator Styles */
+        .nav-indicator {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100; /* Ensure it's above most content */
+            display: flex;
+            flex-direction: column;
+            gap: 15px; /* Slightly reduced gap for a more compact look */
+            align-items: center;
+        }
+        
+        .nav-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--neutral-dark);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid rgba(255,255,255,0.1); /* Subtle border */
+        }
+        
+        .nav-dot.active {
+            background: var(--electric-blue);
+            box-shadow: 0 0 12px var(--electric-blue), 0 0 5px var(--electric-blue); /* Enhanced glow */
+            transform: scale(1.2); /* Slightly larger when active */
+        }
+        
+        .nav-line {
+            width: 2px;
+            height: 15px; /* Adjusted height */
+            background: var(--neutral-dark);
+            opacity: 0.5;
+        }
         /* Animations */
         @keyframes fadeInUp {
             from {
@@ -749,6 +786,9 @@
             .hero-buttons {
                 justify-content: center; /* Center buttons on mobile */
             }
+.nav-indicator {
+                display: none; /* Hide on mobile */
+            }
         }
 
         /* Mobile Nav Specific Styles */
@@ -910,6 +950,23 @@
             <li><a href="#philosophy" class="nav-link">Philosophy</a></li>
             <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
+<div class="nav-indicator">
+        <div class="nav-dot" data-section="home" onclick="document.getElementById('home').scrollIntoView({behavior: 'smooth'});"></div>
+        <div class="nav-line"></div>
+        <div class="nav-dot" data-section="about" onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'});"></div>
+        <div class="nav-line"></div>
+        <div class="nav-dot" data-section="skills" onclick="document.getElementById('skills').scrollIntoView({behavior: 'smooth'});"></div>
+        <div class="nav-line"></div>
+        <div class="nav-dot" data-section="experience" onclick="document.getElementById('experience').scrollIntoView({behavior: 'smooth'});"></div>
+        <div class="nav-line"></div>
+        <div class="nav-dot" data-section="education" onclick="document.getElementById('education').scrollIntoView({behavior: 'smooth'});"></div>
+        <div class="nav-line"></div>
+        <div class="nav-dot" data-section="projects" onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth'});"></div>
+        <div class="nav-line"></div>
+        <div class="nav-dot" data-section="philosophy" onclick="document.getElementById('philosophy').scrollIntoView({behavior: 'smooth'});"></div>
+        <div class="nav-line"></div>
+        <div class="nav-dot" data-section="contact" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'});"></div>
+    </div>
     </div>
 
     <!-- Navigation Indicator (Optional) -->
@@ -1751,6 +1808,7 @@
         const sections = document.querySelectorAll('section[id]');
         const navLinks = document.querySelectorAll('.nav-link');
         const mobileNavLinks = document.querySelectorAll('.mobile-nav .nav-link');
+        const navDots = document.querySelectorAll('.nav-dot'); // Added for side navigation
         const navbar = document.getElementById('navbar');
         const mobileNav = document.querySelector('.mobile-nav');
         const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
@@ -1759,19 +1817,40 @@
         // Function to update active link
         function updateActiveNav() {
             let index = sections.length;
+            let currentSectionId = "";
 
-            while(--index && window.scrollY + 100 < sections[index].offsetTop) {} // Adjust offset as needed
+            // Adjusted offset for better activation timing, considering viewport height
+            while(--index && window.scrollY + (window.innerHeight / 2) < sections[index].offsetTop) {}
+            
+            if (sections[index]) {
+                currentSectionId = sections[index].getAttribute('id');
+            }
 
             navLinks.forEach((link) => link.classList.remove('active-nav'));
             mobileNavLinks.forEach((link) => link.classList.remove('active-nav'));
+            navDots.forEach((dot) => dot.classList.remove('active')); // Deactivate all dots
 
-            // Check if the corresponding link exists before adding class
-            if (navLinks[index]) {
-                navLinks[index].classList.add('active-nav');
-            }
-             if (mobileNavLinks[index]) {
-                mobileNavLinks[index].classList.add('active-nav');
-            }
+            // Activate main nav links
+            // The original logic for navLinks and mobileNavLinks might need adjustment
+            // if their order doesn't perfectly match sections.
+            // For now, we'll use currentSectionId for more robust matching.
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === '#' + currentSectionId) {
+                    link.classList.add('active-nav');
+                }
+            });
+            mobileNavLinks.forEach(link => {
+                 if (link.getAttribute('href') === '#' + currentSectionId) {
+                    link.classList.add('active-nav');
+                }
+            });
+            
+            // Activate the corresponding nav-dot
+            navDots.forEach(dot => {
+                if (dot.getAttribute('data-section') === currentSectionId) {
+                    dot.classList.add('active');
+                }
+            });
         }
 
         // Smooth scroll functionality
