@@ -234,6 +234,11 @@
             background: radial-gradient(circle at 50% 50%, rgba(138, 43, 226, 0.1), transparent 70%);
             z-index: -1;
         }
+#contact {
+            min-height: auto; /* Override default section min-height */
+            padding-top: 3rem; /* Reduce top padding */
+            padding-bottom: 3rem; /* Reduce bottom padding */
+        }
 
         .grid-lines {
             position: absolute;
@@ -264,8 +269,8 @@
 
         .profile-container {
             position: relative;
-            width: 300px;
-            height: 300px;
+            width: 350px; /* Increased size */
+            height: 350px; /* Increased size */
             margin: 0 auto;
             perspective: 1000px;
         }
@@ -280,7 +285,7 @@
             overflow: hidden;
             transform-style: preserve-3d;
             transition: transform 0.5s ease;
-            box-shadow: 0 0 25px rgba(0, 191, 255, 0.7);
+            box-shadow: 0 0 35px 5px rgba(0, 191, 255, 0.8); /* Enhanced shadow */
         }
         
         .profile-img {
@@ -918,7 +923,7 @@
         <div class="container mx-auto px-4">
             <div class="flex flex-col-reverse md:flex-row items-center justify-between max-w-6xl mx-auto">
                 <!-- Text Content -->
-                <div class="md:w-1/2 text-center md:text-left">
+                <div class="md:w-3/5 text-center md:text-left">
                     <h1 class="hero-title glitch-effect animate-fadeInUp" data-text="Karlo Habek"><span class="gradient-text">Karlo Habek</span></h1>
                     <h2 class="hero-subtitle text-bright-cyan animate-fadeInUp" style="animation-delay: 0.2s;">Student · Teaching assistant · Mechatronics Technician</h2>
                     <p class="mt-4 text-lg animate-fadeInUp hero-summary" style="animation-delay: 0.4s;">
@@ -926,14 +931,14 @@
                         Alongside my studies, I work as a teaching assistant for the courses Mathematics 1 and Mathematics 2 from the first year at FSB.
                         I proudly hold the title of Mechatronics Technician, obtained upon completing the corresponding program at Ruđer Bošković Technical School in Zagreb.
                     </p>
-                    <div class="mt-8 flex flex-wrap gap-4 justify-center md:justify-start hero-buttons" style="animation-delay: 0.6s;">
+                    <div class="mt-8 flex gap-4 justify-center md:justify-start hero-buttons" style="animation-delay: 0.6s;">
                         <a href="#projects" class="btn-futuristic animate-fadeInUp">View Projects</a>
                         <a href="CV.pdf" download="Karlo_Habek_CV.pdf" class="btn-futuristic animate-fadeInUp" style="background: linear-gradient(90deg, var(--bright-cyan), var(--electric-blue)); box-shadow: 0 0 15px rgba(64, 224, 208, 0.5);">Download CV</a>
                         <a href="#contact" class="btn-futuristic animate-fadeInUp" style="background: linear-gradient(90deg, var(--vibrant-purple), var(--hot-pink)); box-shadow: 0 0 15px rgba(138, 43, 226, 0.5);">Contact Me</a>
                     </div>
                 </div>
                <!-- Profile Image -->
-               <div class="md:w-1/2 mb-10 md:mb-0 flex justify-center">
+               <div class="md:w-2/5 mb-10 md:mb-0 flex justify-center">
                 <div class="profile-container animate-fadeInUp" style="animation-delay: 0.3s;">
                     <div class="profile-hexagon">
                         <img src="assets/portret23.jpg" alt="Karlo Habek" class="profile-img">
@@ -1515,13 +1520,15 @@
                     <div class="holographic-panel p-8 animate-fadeInUp h-full">
                         <h3 class="text-2xl font-semibold mb-6 text-bright-cyan">Send a Message</h3>
                         <form class="contact-form">
-                            <div class="mb-4">
-                                <label for="name" class="block mb-1 font-medium">Name</label>
-                                <input type="text" id="name" name="name" placeholder="Your Name" required>
-                            </div>
-                            <div class="mb-4">
-                                <label for="email" class="block mb-1 font-medium">Email</label>
-                                <input type="email" id="email" name="email" placeholder="Your Email" required>
+                            <div class="flex flex-col md:flex-row gap-4 mb-4">
+                                <div class="w-full md:w-1/2">
+                                    <label for="name" class="block mb-1 font-medium">Name</label>
+                                    <input type="text" id="name" name="name" placeholder="Your Name" required class="w-full p-3 bg-bg-darker border border-vibrant-purple rounded-md focus:ring-electric-blue focus:border-electric-blue transition duration-300">
+                                </div>
+                                <div class="w-full md:w-1/2">
+                                    <label for="email" class="block mb-1 font-medium">Email</label>
+                                    <input type="email" id="email" name="email" placeholder="Your Email" required class="w-full p-3 bg-bg-darker border border-vibrant-purple rounded-md focus:ring-electric-blue focus:border-electric-blue transition duration-300">
+                                </div>
                             </div>
                             <div class="mb-4">
                                 <label for="subject" class="block mb-1 font-medium">Subject</label>
