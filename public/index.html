@@ -310,16 +310,19 @@
             font-size: 2.5rem;
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin-bottom: 2rem;
-            display: inline-block;
+            margin-top: 3rem; /* Adjusted for spacing */
+            margin-bottom: 4rem; /* Increased distance to content */
+            display: block; /* For centering */
+            text-align: center; /* For centering */
         }
 
         .section-title::after {
             content: '';
             position: absolute;
             bottom: -10px;
-            left: 0;
-            width: 100%;
+            left: 50%; /* For centering underline */
+            transform: translateX(-50%); /* For centering underline */
+            width: 150px; /* Adjusted width for centered underline */
             height: 3px;
             background: linear-gradient(90deg, var(--electric-blue), var(--hot-pink));
             border-radius: 3px;
@@ -403,7 +406,7 @@
             background-color: var(--bg-dark);
             border: 4px solid var(--vibrant-purple);
             border-radius: 50%;
-            top: 30px;
+            top: 20px; /* Adjusted to move dot higher */
             z-index: 1;
             box-shadow: 0 0 15px rgba(138, 43, 226, 0.7);
         }
@@ -436,11 +439,10 @@
         }
 
         .timeline-logo {
-            max-width: 120px; /* Increased */
-            max-height: 50px; /* Increased */
-            margin-right: 15px; /* Added for spacing next to title */
+            max-width: 120px;
+            max-height: 50px;
             object-fit: contain;
-            /* margin-bottom: 10px; Removed, will be handled by wrapper or title */
+            display: block; /* For mx-auto centering and margin control */
         }
 
         .timeline-link {
@@ -453,7 +455,7 @@
         }
 
         .project-card {
-            height: 300px;
+            height: 312px;
             overflow: hidden;
             position: relative;
         }
@@ -914,7 +916,7 @@
     <section id="home" class="section flex items-center justify-center min-h-screen">
         <div class="grid-lines"></div>
         <div class="container mx-auto px-4">
-            <div class="flex flex-col-reverse md:flex-row items-center justify-between">
+            <div class="flex flex-col-reverse md:flex-row items-center justify-between max-w-6xl mx-auto">
                 <!-- Text Content -->
                 <div class="md:w-1/2 text-center md:text-left">
                     <h1 class="hero-title glitch-effect animate-fadeInUp" data-text="Karlo Habek"><span class="gradient-text">Karlo Habek</span></h1>
@@ -947,7 +949,7 @@
         <div class="grid-lines"></div>
         <div class="container mx-auto px-4">
             <h2 class="section-title gradient-text text-center animate-fadeInUp">About Me / Goals</h2>
-            <div class="flex flex-col md:flex-row gap-10 items-stretch"> <!-- Use items-stretch -->
+            <div class="flex flex-col md:flex-row gap-10 items-stretch max-w-6xl mx-auto"> <!-- Use items-stretch -->
                 <!-- Left Panel: Goals -->
                 <div class="md:w-1/2 flex"> <!-- Added flex -->
                     <div class="holographic-panel p-8 h-full animate-fadeInUp w-full"> <!-- Added w-full -->
@@ -1003,6 +1005,7 @@
             <h2 class="section-title gradient-text text-center animate-fadeInUp">Skills Matrix</h2>
 
             <!-- Technical Skills Circles -->
+        <div class="max-w-6xl mx-auto"> <!-- Added wrapper for centering -->
             <div class="mb-16">
                 <h3 class="text-2xl font-semibold mb-8 text-center text-bright-cyan animate-fadeInUp">Technical Skills</h3>
                 <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-8">
@@ -1194,6 +1197,7 @@
                     <div><span class="font-semibold text-electric-blue">ROBOGUIDE:</span> 3/5</div>
                 </div>
             </div>
+        </div> <!-- End of max-w-6xl mx-auto wrapper -->
         </div>
     </section>
 
@@ -1280,9 +1284,9 @@
                 <!-- FSB -->
                 <div class="timeline-container left">
                     <div class="holographic-panel timeline-content">
-                        <div class="flex items-center mb-2">
-                            <img src="assets/FSB_logo4.png" alt="FSB Logo" class="timeline-logo">
-                            <h3 class="text-xl font-semibold">Undergraduate: Mechatronics & Robotics</h3>
+                        <img src="assets/FSB_logo4.png" alt="FSB Logo" class="timeline-logo mx-auto mb-1.5">
+                        <div>
+                            <h3 class="text-xl font-semibold text-center mt-0 mb-8">Undergraduate: Mechatronics & Robotics</h3>
                         </div>
                         <p class="timeline-date">2022 - Present | FSB / FAMENA, University of Zagreb, Croatia</p>
                         <p class="text-sm mb-3">Currently a third-year student with a GPA of 4.75 (first two years). Recipient of Dean's Award (Years 1 & 2), STEM Scholarship (Years 1 & 3), and City of Zagreb Scholarship for Excellence (Year 2). Gained strong theoretical foundation (mechanics, math, materials, etc.) and practical skills (Python, 3D modeling, web dev, LaTeX). Employed as Teaching Assistant (Math 1 & 2).</p>
@@ -1292,9 +1296,9 @@
                 <!-- TSRB -->
                 <div class="timeline-container right">
                     <div class="holographic-panel timeline-content">
-                        <div class="flex items-center mb-2">
-                            <img src="assets/tsrb_logo.png" alt="TSRB Logo" class="timeline-logo">
-                            <h3 class="text-xl font-semibold">Mechatronics Technician</h3>
+                        <img src="assets/tsrb_logo.png" alt="TSRB Logo" class="timeline-logo mx-auto mb-1.5">
+                        <div>
+                            <h3 class="text-xl font-semibold text-center mt-0 mb-8">Mechatronics Technician</h3>
                         </div>
                         <p class="timeline-date">2018 - 2022 | Ruđer Bošković Technical School (TSRB), Zagreb, Croatia</p>
                         <p class="text-sm mb-3">Graduated top of class (only one 'B' grade). Won 1st place in school math and inter-school pneumatics competitions. Acquired practical skills (electrical assembly, PCB production, PLC/microcontroller programming, pneumatics, hydraulics, 3D printing, turning, G-code, Kuka robot operation). Mastered software (AutoCAD, Fusion 360, CATIA, EAGLE, FluidSIM). Excellent state graduation exam results (Math: 59/60, Physics: 58/60).</p>
@@ -1314,7 +1318,7 @@
                 Here are a couple of my most significant projects. I've worked on numerous smaller projects as well, constantly honing my skills.
             </p>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
                 <!-- Project 1: Coil Winder -->
                 <div class="project-card holographic-panel animate-fadeInUp" style="animation-delay: 0.1s;">
                     <img src="assets/rsz_namatalica4.png" alt="Coil Winder Project">
@@ -1323,11 +1327,11 @@
                         <p class="project-description">
                             High school final project (collab. w/ INETEC) for winding coils used in eddy current probes. Features adjustable speed (potentiometer + foot pedal), turn counting (encoder), LCD display (current/total turns, layer info), and user-selectable counting modes. Significantly aids the manual winding process.
                         </p>
-                        <!-- <div class="project-tech">
+                        <div class="project-tech">
                             <span class="tech-tag">Microcontroller</span>
                             <span class="tech-tag">Electronics</span>
                             <span class="tech-tag">Mechanical Design</span>
-                        </div> -->
+                        </div>
                          <a href="https://ibb.co/9rdG9z5" target="_blank" class="project-link">View Image <i class="fas fa-external-link-alt ml-1 text-xs"></i></a>
                     </div>
                 </div>
@@ -1340,18 +1344,18 @@
                         <p class="project-description">
                             GUI application (Python/customtkinter) for browsing NASA Mars rover images (Curiosity, Opportunity, Spirit) using NASA's API. Seminar project for OOP, later enhanced. Features include searching by date/sol, 20+ criteria filtering, parallel image downloading, customizable settings (theme, music, image saving options, API key).
                         </p>
-                        <!-- <div class="project-tech">
+                        <div class="project-tech">
                             <span class="tech-tag">Python</span>
                             <span class="tech-tag">GUI (customtkinter)</span>
                             <span class="tech-tag">API Integration</span>
                             <span class="tech-tag">Data Handling</span>
-                        </div> -->
+                        </div>
                          <a href="https://ibb.co/J5mYCxw" target="_blank" class="project-link">View Image <i class="fas fa-external-link-alt ml-1 text-xs"></i></a>
                     </div>
                 </div>
 
-                <!-- Add more project cards here if needed -->
-                 <!-- <div class="project-card holographic-panel animate-fadeInUp" style="animation-delay: 0.3s;">
+                <!-- placeholder projects -->
+                <!-- <div class="project-card holographic-panel animate-fadeInUp" style="animation-delay: 0.3s;">
                     <img src="https://via.placeholder.com/600x400/8A2BE2/E0FFFF?text=Project+3" alt="Project 3">
                     <div class="project-overlay">
                         <h3 class="project-title">Quantum Entanglement Visualizer</h3>
@@ -1384,8 +1388,11 @@
                          <a href="#" target="_blank" class="project-link">GitHub Repo <i class="fas fa-external-link-alt ml-1 text-xs"></i></a>
                     </div>
                 </div> -->
+
+                <!-- end of placeholder projects -->
             </div>
-             <p class="text-center mt-8 text-sm text-gray-400 animate-fadeInUp">
+
+            <p class="text-center mt-8 text-sm text-gray-400 animate-fadeInUp">
                 Note: Only my most significant and major projects are listed here.
             </p>
         </div>
@@ -1459,7 +1466,7 @@
         <div class="container mx-auto px-4">
             <h2 class="section-title gradient-text text-center animate-fadeInUp">Get In Touch</h2>
 
-            <div class="flex flex-col md:flex-row gap-10">
+            <div class="flex flex-col md:flex-row gap-10 max-w-6xl mx-auto">
                 <!-- Contact Info -->
                 <div class="md:w-1/2">
                     <div class="holographic-panel p-8 animate-fadeInUp h-full">
@@ -1809,16 +1816,16 @@
         }
 
         // --- Optional: Parallax effect for background elements ---
-        // gsap.to("body", {
-        //     backgroundPosition: "50% 100%", // Adjust as needed
-        //     ease: "none",
-        //     scrollTrigger: {
-        //         trigger: "body",
-        //         start: "top top",
-        //         end: "bottom bottom",
-        //         scrub: true
-        //     }
-        // });
+        gsap.to("body", {
+            backgroundPosition: "50% 100%", // Adjust as needed
+            ease: "none",
+            scrollTrigger: {
+                trigger: "body",
+                start: "top top",
+                end: "bottom bottom",
+                scrub: true
+            }
+        });
 
     </script>
 </body>
